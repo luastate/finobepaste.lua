@@ -4529,6 +4529,7 @@ end
                 key = properties.key or nil, 
                 mode = properties.mode or "toggle",
                 active = properties.default or false, 
+                selected = nil,
 
                 hold_instances = {},
             }
@@ -4830,13 +4831,13 @@ end
                 end 
             end
 
-            local selected; 
+            cfg.selected; 
 
             hold.MouseButton1Click:Connect(function()
-                if selected then 
-                    selected.BackgroundTransparency = 1
+                if cfg.selected then 
+                    cfg.selected.BackgroundTransparency = 1
                 end 
-                selected = "hold"
+                cfg.selected = "hold"
                 hold.BackgroundTransparency = 0 
 
                 cfg.set_mode("hold") 
@@ -4845,10 +4846,10 @@ end
             end) 
 
             press.MouseButton1Click:Connect(function()
-                if selected then 
-                    selected.BackgroundTransparency = 1
+                if cfg.selected then 
+                    cfg.selected.BackgroundTransparency = 1
                 end 
-                selected = "press"
+                cfg.selected = "press"
                 press.BackgroundTransparency = 0 
 
                 cfg.set_mode("toggle") 
@@ -4857,10 +4858,10 @@ end
             end) 
 
             always.MouseButton1Click:Connect(function()
-                if selected then 
-                    selected.BackgroundTransparency = 1
+                if cfg.selected then 
+                    cfg.selected.BackgroundTransparency = 1
                 end 
-                selected = "always"
+                cfg.selected = "always"
                 
                 always.BackgroundTransparency = 0 
                 cfg.set_mode("always") 
